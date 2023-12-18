@@ -51,7 +51,8 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 echo "############################"
 echo "Update system & network"
 echo "############################"
-sudo usermod -aG docker admin && newgrp docker
+sudo usermod -aG docker admin 
+groupadd docker
 sudo sed -i '/^#net\.ipv4\.ip_forward=0/c\net.ipv4.ip_forward=1' /etc/sysctl.conf
 sudo sysctl -p
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
