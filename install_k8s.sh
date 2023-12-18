@@ -69,5 +69,7 @@ echo "############################"
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+k get secrets -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
 kubectl port-forward -n argocd service/argocd-server 8081:80 --address 0.0.0.0 &
 
