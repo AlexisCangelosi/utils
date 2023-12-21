@@ -4,11 +4,11 @@
 echo "############################"
 echo "Install Minikube"
 echo "############################"
-apt update
-apt-get install -y curl apt-transport-https ca-certificates curl gnupg
+sudo apt update
+sudo apt-get install -y curl apt-transport-https ca-certificates curl gnupg
 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-cp minikube-linux-amd64 /usr/local/bin/minikube
-chmod 755 /usr/local/bin/minikube
+sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+sudo chmod 755 /usr/local/bin/minikube
 minikube version
 
 # Install Helm
@@ -16,7 +16,7 @@ echo "############################"
 echo "Install Helm"
 echo "############################"
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod 700 get_helm.sh
+sudo chmod 700 get_helm.sh
 ./get_helm.sh
 
 # Install kubectl
@@ -24,8 +24,8 @@ echo "############################"
 echo "Install Kubectl"
 echo "############################"
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-mv ./kubectl /usr/local/bin/kubectl
+sudo chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version -o json
 
 echo "############################"
