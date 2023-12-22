@@ -132,6 +132,7 @@ while :; do
             echo "############################"
             minikube start
             minikube tunnel
+            echo "Cluster started"
             ;;
         *)
             break
