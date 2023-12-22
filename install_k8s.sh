@@ -103,6 +103,8 @@ install_argocd() {
     echo "############################"
     execute_command kubectl create namespace argocd
     execute_command kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    execute_command k get secrets -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+    execute_command kubectl port-forward -n argocd service/argocd-server 8081:80 --address 0.0.0.0 &
 }
 
 # Main script execution
